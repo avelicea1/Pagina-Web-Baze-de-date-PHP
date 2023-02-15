@@ -1,0 +1,14 @@
+CREATE TABLE `oferta` (
+  `id_agentie` int NOT NULL,
+  `id_spatiu` int NOT NULL,
+  `vanzare` char(1) NOT NULL,
+  `pret` varchar(30) NOT NULL,
+  `moneda` varchar(6) NOT NULL,
+  PRIMARY KEY (`id_agentie`,`id_spatiu`),
+  KEY `FK_oferta_spatiu` (`id_spatiu`),
+  CONSTRAINT `FK_oferta_agentie` FOREIGN KEY (`id_agentie`) REFERENCES `agentie` (`id_agentie`) ON DELETE CASCADE,
+  CONSTRAINT `FK_oferta_spatiu` FOREIGN KEY (`id_spatiu`) REFERENCES `spatiu` (`id_spatiu`) ON DELETE CASCADE,
+  CONSTRAINT `CK_oferta_moneda` CHECK ((`moneda` in ('EUR','RON','USD'))),
+  CONSTRAINT `CK_oferta_moneda_vanzare` CHECK (((`MONEDA` <> 'EUR') or (`VANZARE` ='D'))),
+  CONSTRAINT `CK_oferta_vanzare` CHECK ((`vanzare` in ('D','N')))
+)
