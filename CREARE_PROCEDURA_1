@@ -1,0 +1,6 @@
+CREATE PROCEDURE `new_procedure`()
+BEGIN
+SELECT *
+FROM Spatiu 
+WHERE id_tip IN (SELECT ID_TIP FROM TIP WHERE DENUMIRE ='garaj') AND zona='2' AND suprafata >= ALL (SELECT suprafata from Spatiu where id_tip IN (SELECT ID_TIP FROM TIP WHERE DENUMIRE ='garaj') AND zona='2' );
+END
