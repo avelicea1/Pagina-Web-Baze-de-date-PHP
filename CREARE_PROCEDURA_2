@@ -1,0 +1,16 @@
+CREATE PROCEDURE `new_procedure1`()
+BEGIN
+select nume
+                from agentie 
+                where id_agentie in 
+                (select n1.id_agentie 
+                from oferta n1 join oferta n2 ON n1.id_spatiu=n2.id_spatiu 
+                WHERE n1.pret IN 
+                (SELECT pret 
+                from oferta
+                where id_agentie in (select id_agentie from agentie where nume='AgentieRoyal')
+                 AND n1.id_spatiu='111') AND n1.moneda IN (SELECT moneda
+                from oferta
+                where id_agentie in (select id_agentie from agentie where nume='AgentieRoyal')
+                 AND n1.id_spatiu='111') )and nume<>'AgentieRoyal';
+END
