@@ -1,0 +1,6 @@
+CREATE TABLE `tip` (
+  `id_tip` int NOT NULL,
+  `denumire` varchar(30) NOT NULL,
+  `caracteristici` varchar(30) NOT NULL,
+  PRIMARY KEY (`id_tip`)
+)
