@@ -1,0 +1,6 @@
+CREATE TABLE `agentie` (
+  `id_agentie` int NOT NULL,
+  `nume` varchar(30) NOT NULL,
+  `telefon` varchar(10) DEFAULT NULL,
+  PRIMARY KEY (`id_agentie`)
+)
